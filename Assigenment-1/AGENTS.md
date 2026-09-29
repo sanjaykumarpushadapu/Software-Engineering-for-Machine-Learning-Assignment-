@@ -1,6 +1,7 @@
 # AGENTS.md – SEML Assignment I (Group 13)
 
-Instructions for any AI assistant (Claude etc.) working in this folder. Read this first.
+Instructions for any AI assistant (Claude etc.) working in this folder. Read `CLAUDE.md` first (rules AR-### / BR-### and guardrails), then this file.
+Workflow agents: `.claude/agents/implementer.md`, `.claude/agents/business-auditor.md`; command `/plan-implement-review`.
 
 ## Project
 - **Course:** AIMLZG546 – Software Engineering for Machine Learning (BITS WILP). **Group 13**, 4 members (A–D, roles in `README.md`).
@@ -21,7 +22,10 @@ Instructions for any AI assistant (Claude etc.) working in this folder. Read thi
 | `README.md` | Roadmap: assessment checklist, roles, person-wise steps, checkpoints |
 | `13.md` | Report draft in Markdown. Each member fills their own sections; converted to `13.pdf` / `13.docx` at the end |
 | `13.ipynb` | Implementation notebook (to be created; must show names + group details at the top) |
-| `AGENTS.md` | This file |
+| `AGENTS.md` | This file (working style + progress) |
+| `CLAUDE.md` | Rules, guardrails, commands, standards, workflow |
+| `.claude/agents/` | Implementer and Business Auditor agents |
+| `.claude/commands/` | `/plan-implement-review` command |
 
 ## How to work with the user
 1. **Step by step, not all at once.** Do one part, show it, and wait for the user's OK before the next. Never dump a whole section or several steps together.
@@ -30,7 +34,8 @@ Instructions for any AI assistant (Claude etc.) working in this folder. Read thi
 4. Check `Assignment I.pdf` before answering anything about what is required. Do not rely on the course slides for requirements (slides are the syllabus, not the assessment).
 5. Do not add work that will not be built (no "unrealised" plan items). If scope changes, update `README.md` and `13.md` together.
 6. In `13.md`, leave `TODO` for anything not yet done. Never fill in BITS IDs, names, percentages or results that the user has not given.
-7. Facts from memory (dataset size, fraud %, etc.) must be marked as unverified until checked against the real data.
+7. **Report wording must read like a student's academic report, not AI output.** Plain, formal English in full sentences and short paragraphs; first person plural ("we"). Avoid marketing words (e.g. "robust", "seamless", "leverage", "strong use case"), arrows (→), heavy bold, emojis and long bullet lists. Use tables only where they genuinely help. Working notes (owners, TODO hints) go in HTML comments so they do not appear in the final PDF.
+8. Facts from memory (dataset size, fraud %, etc.) must be marked as unverified until checked against the real data.
 
 ## Progress
 | Item | Status |
