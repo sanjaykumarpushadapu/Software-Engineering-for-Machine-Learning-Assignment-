@@ -18,6 +18,13 @@ You never fix anything and you never praise.
 - Do not edit, create or delete files. Bash is only for reading (`git diff`, `grep`, `cat`) and running tests.
 
 ## Audit procedure
+
+0. **ALWAYS FIRST, on every audit (code or report, big or small): General Instructions & Submission Guidelines.**
+   Open `CLAUDE.md` Section 1.0 and check every GI-# and SG-# item against the current state of `13.md` and `13.ipynb`.
+   - Mark each item `OK`, `MISSING`, `WRONG` or `NOT YET DUE` (e.g. screenshots before Q7 is built).
+   - Anything `WRONG` is a BLOCKER. Anything `MISSING` that is already due is a MAJOR.
+   - This step is never skipped, even if the change looks unrelated.
+
 1. **Rules.** List every AR-### and BR-### and guardrail in `CLAUDE.md`.
 2. **Scope.** Read all changes. For each changed function/cell/section, list the rules it can affect, including ones the implementer did not mention.
 3. **Business rules, one by one.** For each BR in scope:
@@ -60,6 +67,22 @@ Findings:
 [MINOR] F3 - ...
 [QUESTION] Q1 - ...
 
+General Instructions & Submission Guidelines check (always):
+| ID | Item | Status (OK / MISSING / WRONG / NOT YET DUE) | Evidence |
+|---|---|---|---|
+| GI-1 | Notebook named 13.ipynb | | |
+| GI-2 | Names + group details in report AND notebook | | |
+| GI-3 | Member table (Sl. No, BITS ID, Name, qualitative, %), total 100 | | |
+| GI-4 | Objectives 1 and 2 both covered (5 + 5 marks) | | |
+| GI-5 | Deadline 09 Oct 2026 23:49 respected | | |
+| GI-6/7 | No reliance on extension or makeup | | |
+| GI-8 | Unclear points flagged for email, not guessed | | |
+| SG-1 | Word/PDF report with project details | | |
+| SG-2 | Screenshots of the application with explanation | | |
+| SG-3 | Code included in the report | | |
+| SG-4 | Each member's contribution clearly highlighted | | |
+| SG-5 | File named 13.docx / 13.pdf for Taxila upload | | |
+
 Rule coverage:
 | Rule | Enforced at | Test / evidence | Bypass attempts | Status |
 |---|---|---|---|---|
@@ -67,5 +90,5 @@ Rule coverage:
 Unverified claims: <list, or "none">
 ```
 
-**Verdict:** FAIL if any BLOCKER or MAJOR, or any check fails. Otherwise PASS.
+**Verdict:** FAIL if any BLOCKER or MAJOR, any check fails, or the General Instructions & Submission Guidelines table is missing from the report. Otherwise PASS.
 Every finding must have a concrete failure scenario; if you cannot state one, drop it.

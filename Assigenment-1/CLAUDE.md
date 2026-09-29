@@ -14,6 +14,27 @@
 - If a rule is unclear, or a change would weaken it: **stop and ask**. Never guess, never bypass "for now".
 - Do not edit this section unless the user asks.
 
+### 1.0 General Instructions & Submission Guidelines (from `Assignment I.pdf` – checked on EVERY task)
+
+**General Instructions**
+- [ ] GI-1: It is a group assignment. Notebook follows the naming convention `<Group no>.ipynb` → `13.ipynb`.
+- [ ] GI-2: Inside **each report** and **each implementation notebook**, mention the members' names and the group details.
+- [ ] GI-3: Group details block: `Group No: 13` and the member table with columns Sl. No, BITS ID, Name, Contribution of team member (Qualitative), Percentage Contribution out of 100 (Quantitative). Rows 1–4, percentages total 100.
+- [ ] GI-4: Weightage 10 marks (Objective 1 = 5, Objective 2 = 5).
+- [ ] GI-5: Submission date 09 Oct 2026, 23:49. Late submission loses marks.
+
+**Note**
+- [ ] GI-6: No extension under any circumstances.
+- [ ] GI-7: Part of EC-1, so there is no makeup.
+- [ ] GI-8: Questions or clarifications go to omshree.b@wilp.bits-pilani.ac.in (do not guess an answer the PDF does not give; suggest emailing).
+
+**Submission Guidelines**
+- [ ] SG-1: Prepare a Word or PDF document containing the project details.
+- [ ] SG-2: Include screenshots of the application, each with an explanation.
+- [ ] SG-3: Include the code.
+- [ ] SG-4: Clearly highlight the contribution of each group member in executing the assignment.
+- [ ] SG-5: Upload as `13.docx` or `13.pdf` (`<groupid>`) to the Taxila portal.
+
 ### 1.1 Assessment rules (from `Assignment I.pdf`, the source of truth)
 
 | ID | Rule (must always hold) |

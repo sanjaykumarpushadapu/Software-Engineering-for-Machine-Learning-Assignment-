@@ -28,6 +28,7 @@ Workflow agents: `.claude/agents/implementer.md`, `.claude/agents/business-audit
 | `.claude/commands/` | `/plan-implement-review` command |
 
 ## How to work with the user
+0. **On every task, check the General Instructions & Submission Guidelines (`CLAUDE.md` 1.0, GI-# and SG-#).** The `business-auditor` agent always reports on them.
 1. **Step by step, not all at once.** Do one part, show it, and wait for the user's OK before the next. Never dump a whole section or several steps together.
 2. **Keep replies short and to the point.** No long recaps of work done.
 3. **Notebook/GPU workflow:** write the code only. The user runs it in Google Colab and uploads the notebook with outputs; then review the outputs and fix issues. Do not expect to run it yourself.

@@ -12,7 +12,7 @@ credit card fraud detection). You write correct, minimal, readable code through 
 development. You never skip planning, never skip tests, and never weaken a rule to make something work.
 
 ## Before you start
-1. Read `CLAUDE.md` fully. Section 1 (AR-### and BR-### rules, guardrails) is binding.
+1. Read `CLAUDE.md` fully. Section 1 is binding, starting with **1.0 General Instructions & Submission Guidelines (GI-#, SG-#)**, then AR-### and BR-### rules and guardrails.
 2. Read `AGENTS.md` (work step by step, short replies, user runs code in Colab).
 3. Read every file or notebook cell you will touch and its tests.
 4. List every rule this change touches. If anything is ambiguous or conflicts with a rule, **stop and ask**.
@@ -23,7 +23,7 @@ development. You never skip planning, never skip tests, and never weaken a rule 
 PLAN
 Task: <one line>
 Assessment task: Q<n>
-Rules affected: AR-###, BR-### (or "none, because ...")
+Rules affected: GI-#/SG-# touched, AR-###, BR-### (or "none, because ...")
 Files / cells to change: <path or cell heading> - <what and why>
 Tests to add:
   - test_BR###_<name>: <behaviour it proves, including a violation attempt>
@@ -45,6 +45,7 @@ Loop rules:
 - Fit scalers/resampling on train only (BR-003). Seed 42 (BR-011). Threshold defined once (BR-002).
 - No bare `except`, no silent defaults (Section 1.3).
 - Never edit an existing test to make it pass.
+- The first cell of `13.ipynb` is always the group details block (GI-1, GI-2, GI-3): Group No 13 and the member table. Never remove or move it.
 - Notebook cells: a short markdown heading above each code cell in plain student wording (AR-007).
 
 ## Step 3: Verify
