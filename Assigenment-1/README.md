@@ -24,22 +24,51 @@
 - `13.pdf` / `13.docx` – report: project details, app screenshots + explanation, code, contribution table (BITS ID, name, qualitative contribution, % out of 100)
 - Upload to Taxila. Queries: omshree.b@wilp.bits-pilani.ac.in
 
-**Suggested project:** Credit card fraud detection (Session 4 case study, Kaggle dataset).
-**Patterns:** Pipe-and-Filter (ML pipeline) + Microservices (FastAPI prediction service, Streamlit UI, MLflow registry). Laptop/Colab, no GPU.
+**Locked project:** Credit card fraud detection (Kaggle dataset).
+**Locked patterns:** Pipe-and-Filter (ML pipeline) + Microservices (FastAPI prediction service, MLflow registry). Everything runs from one notebook (`13.ipynb`) in Colab or a laptop, no GPU. The FastAPI `/docs` page is used for the application screenshots.
+
+## 1A. Assessment instructions and guidelines (from the PDF – do not miss)
+
+**General instructions**
+- [ ] Group assignment; follow the naming convention `<Group no>.ipynb` → **`13.ipynb`**
+- [ ] Inside **each report and each implementation notebook**, mention **name and group details**
+- [ ] Group details block at the top: Group No (13) and the member table – Sl. No, BITS ID, Name, Contribution (qualitative), Percentage contribution (out of 100, quantitative)
+
+**Marks and deadline**
+- [ ] Weightage: 10 marks (Objective 1 = 5, Objective 2 = 5)
+- [ ] Submission date: **09 Oct 2026, 23:49**. Late submissions lose marks
+- [ ] No extension under any circumstances; part of EC-1 so there is **no makeup**
+- [ ] Questions or clarifications: omshree.b@wilp.bits-pilani.ac.in
+
+**Project details (what must be in the work)**
+- [ ] 1. Domain + problem statement for an ML-based application
+- [ ] 2. Requirement specifications + measurable goals using GR4ML concepts
+- [ ] 3. GR4ML views: Business View, Analytics Design View, Data Preparation View
+- [ ] 4. Top three quality requirements with justification for the selection
+- [ ] 5. System architecture diagram showing both ML and non-ML components (any tool)
+- [ ] 6. Select and apply any two relevant architectural patterns
+- [ ] 7. Implement the selected patterns with appropriate technologies and tools
+
+**Submission guidelines**
+- [ ] One Word/PDF document containing the project details
+- [ ] **Screenshots of the application, with explanation**
+- [ ] The **code**
+- [ ] **Clearly highlight the contribution of each group member**
+- [ ] Upload as `13.docx` or `13.pdf` (`<groupid>`) to the **Taxila portal**
 
 ## 2. Team roles
 
 | Member | BITS ID | Role | Owns | Main outputs |
 |---|---|---|---|---|
-| A | | Lead / Business analyst | Obj 1: Q1, Q2 + Business View; final report | Problem statement, specs, measurable goals, Business View, report, Streamlit UI |
-| B | | GR4ML modeller / Integrator | Obj 1: Q3 (Analytics Design + Data Prep views) | 2 GR4ML diagrams, Docker Compose, end-to-end test, screenshots |
+| A | | Lead / Business analyst | Obj 1: Q1, Q2 + Business View; final report | Problem statement, specs, measurable goals, Business View, report, prediction logging |
+| B | | GR4ML modeller / Integrator | Obj 1: Q3 (Analytics Design + Data Prep views) | 2 GR4ML diagrams, end-to-end run of the notebook, test calls, screenshots |
 | C | | System architect | Obj 1: Q4; Obj 2: Q5, Q6 | Top 3 quality reqs, architecture diagram, pattern write-ups, FastAPI service |
 | D | | ML engineer | Obj 2: Q7 (ML side) | EDA, Pipe-and-Filter pipeline, MLflow registry, `13.ipynb` |
 
 ## 3. Person-wise work plan (detailed)
 
 Each step shows **what to do**, the **output** (file to produce) and **done when** (how you know it's finished).
-Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `notebook/`.
+Repo folders used below: `docs/`, `diagrams/`, `notebook/`. The notebook writes `pipeline/` and `api/` code files itself (via `%%writefile`).
 
 ---
 
@@ -57,7 +86,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Done when: everyone can push code and edit the report.
 
 **A3. Requirement specs + measurable goals**
-- Functional requirements, e.g. FR1 accept a transaction via API · FR2 return fraud label + probability · FR3 show result in UI · FR4 retrain monthly · FR5 log every prediction.
+- Functional requirements, e.g. FR1 accept a transaction via API · FR2 return fraud label + probability · FR3 show result on the FastAPI `/docs` page · FR4 retrain monthly · FR5 log every prediction.
 - Measurable goals table (Goal → Metric → Target): catch fraud → recall ≥ 90% · don't annoy customers → false-positive rate < 2% · decide during payment → p95 latency < 200 ms · cut losses → fraud loss down 30%.
 - Output: `docs/02_requirements.md`
 - Done when: shared with C (needed for quality requirements).
@@ -73,10 +102,10 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Output: `diagrams/business_view.png` + 1 paragraph explanation.
 - Done when: every element links to a goal from A3.
 
-**A5. Streamlit UI (non-ML component)**
-- `ui/app.py`: CSV upload / sample-row picker (the Kaggle data has anonymised columns V1–V28, Time, Amount, so a hand-typed form is impractical) → "Check" button → POST to the API from C → show label, probability, red/green colour.
-- Optional: table of last 20 predictions.
-- Done when: works against C's running API; screenshot sent to B.
+**A5. Prediction logging (non-ML component)**
+- Write a small `log_prediction()` function (in the notebook, cell shared with C) that appends each request, prediction, probability and latency to `predictions_log.csv`.
+- C's API calls it on every `/predict`.
+- Done when: after test calls, the log file has one row per call; screenshot sent to B.
 
 **A6. Compile report**
 - Paste sections in order Q1–Q7, add diagrams, screenshots, code (appendix).
@@ -111,14 +140,14 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Draw data-flow arrows between entities through the tasks.
 - Output: `diagrams/data_preparation_view.png` + explanation.
 
-**B4. Docker Compose + end-to-end test**
-- Dockerfiles for `api/` and `ui/`; `docker-compose.yml` with services: mlflow (5000), api (8000), ui (8501).
-- Run `docker compose up`; submit one known fraud row and one normal row through the UI; check results.
-- Log bugs as GitHub issues and tag the owner.
-- Done when: a fresh clone + `docker compose up` works first time.
+**B4. End-to-end run + test calls**
+- In a fresh Colab runtime, run `13.ipynb` top to bottom (pipeline → MLflow → start API → test calls).
+- Send one known fraud row and one genuine row to `/predict` and check the results and the log file.
+- Log any bug in the group chat and tag the owner.
+- Done when: the notebook runs from top to bottom with no manual fixes.
 
 **B5. Screenshots**
-- Capture: pipeline console run, MLflow runs + registered model, FastAPI `/docs`, UI with fraud result, UI with normal result, containers running.
+- Capture: pipeline console run, MLflow runs + registered model, FastAPI `/docs` page, test call with a fraud row, test call with a genuine row, prediction log file.
 - Write 2–3 lines under each.
 - Output: `docs/screenshots/` → send to A.
 
@@ -142,9 +171,9 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 
 **C3. System architecture diagram**
 - draw.io, with a colour legend for ML vs non-ML:
-  - Non-ML: Streamlit UI, FastAPI endpoint, prediction log/DB, Docker Compose, monitoring/logs.
+  - Non-ML: FastAPI endpoint, request validation, prediction log, `/health` check, notebook runner.
   - ML: training pipeline (ingest → clean → features → train → evaluate), MLflow model registry, model inference, retraining trigger.
-- Show two flows: request flow (UI → API → model → response) and training flow (data → pipeline → registry).
+- Show two flows: request flow (client → API → model → response → log) and training flow (data → pipeline → registry).
 - Output: `diagrams/architecture.png`
 
 **C4. Pattern write-up**
@@ -183,7 +212,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Done when: C can load `models:/fraud-model@champion` (tell C).
 
 **D5. Final notebook**
-- `13.ipynb`: group details table on top, EDA, pipeline run, metrics, confusion matrix, how to run API + UI.
+- `13.ipynb`: names + group details table on top, EDA, pipeline run, metrics, confusion matrix, how to run the API and test calls.
 
 **D6. Final review**
 - Re-run notebook top to bottom; check outputs are saved.
@@ -197,7 +226,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 | D → B | Features, cleaning steps, baseline results |
 | A → C | Measurable goals |
 | D → C | Model registered in MLflow |
-| C → A | API endpoint + sample JSON |
+| A → C | `log_prediction()` function |
 | All → A | Sections + screenshots for report |
 
 ## 4. Step-by-step plan
@@ -220,8 +249,8 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 | 14 | 2 Build | Pipe-and-Filter pipeline: ingest → clean → features → train → evaluate | D | ☐ |
 | 15 | 2 Build | Log trained model to MLflow registry | D | ☐ |
 | 16 | 2 Build | FastAPI prediction microservice loading model from MLflow | C | ☐ |
-| 17 | 2 Build | Streamlit UI (non-ML) calling the prediction API | A | ☐ |
-| 18 | 2 Build | Docker Compose wiring + end-to-end test | B | ☐ |
+| 17 | 2 Build | Prediction logging (non-ML) used by the API | A | ☐ |
+| 18 | 2 Build | End-to-end notebook run + test calls | B | ☐ |
 | 19 | 3 Report | App screenshots with explanations | B | ☐ |
 | 20 | 3 Report | Clean `13.ipynb`: code, metrics, group details | D | ☐ |
 | 21 | 3 Report | Architecture + patterns section of report | C | ☐ |
@@ -234,7 +263,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 |---|---|
 | Domain locked | Problem statement, dataset and 2 patterns agreed |
 | Objective 1 done | Specs, goals, 3 GR4ML views, top 3 quality requirements drafted |
-| App working | Pipeline → MLflow → FastAPI → Streamlit runs end to end |
+| App working | Pipeline → MLflow → FastAPI → test calls run end to end in the notebook |
 | Report draft | All sections in, screenshots added, contribution % sums to 100 |
 
 ## 6. Submission checklist
