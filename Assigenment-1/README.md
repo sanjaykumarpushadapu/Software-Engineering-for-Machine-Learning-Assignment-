@@ -20,8 +20,8 @@
 | | 7. Implement both patterns (working app) | |
 
 **Deliverables**
-- `<GroupNo>.ipynb` – implementation notebook with group details
-- `<groupid>.pdf` / `.docx` – report: project details, app screenshots + explanation, code, contribution table (BITS ID, name, qualitative contribution, % out of 100)
+- `13.ipynb` – implementation notebook with group details
+- `13.pdf` / `13.docx` – report: project details, app screenshots + explanation, code, contribution table (BITS ID, name, qualitative contribution, % out of 100)
 - Upload to Taxila. Queries: omshree.b@wilp.bits-pilani.ac.in
 
 **Suggested project:** Credit card fraud detection (Session 4 case study, Kaggle dataset).
@@ -34,7 +34,7 @@
 | A | | Lead / Business analyst | Obj 1: Q1, Q2 + Business View; final report | Problem statement, specs, measurable goals, Business View, report, Streamlit UI |
 | B | | GR4ML modeller / Integrator | Obj 1: Q3 (Analytics Design + Data Prep views) | 2 GR4ML diagrams, Docker Compose, end-to-end test, screenshots |
 | C | | System architect | Obj 1: Q4; Obj 2: Q5, Q6 | Top 3 quality reqs, architecture diagram, pattern write-ups, FastAPI service |
-| D | | ML engineer | Obj 2: Q7 (ML side) | EDA, Pipe-and-Filter pipeline, MLflow registry, `<GroupNo>.ipynb` |
+| D | | ML engineer | Obj 2: Q7 (ML side) | EDA, Pipe-and-Filter pipeline, MLflow registry, `13.ipynb` |
 
 ## 3. Person-wise work plan (detailed)
 
@@ -52,7 +52,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Done when: all 4 members agree in the group chat.
 
 **A2. Project setup**
-- Create GitHub repo `SEML-Group<No>` with the folders above; add all members.
+- Create GitHub repo `SEML-Group13` with the folders above; add all members.
 - Create shared report doc with headings Q1–Q7 + the contribution table from the PDF.
 - Done when: everyone can push code and edit the report.
 
@@ -74,15 +74,15 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Done when: every element links to a goal from A3.
 
 **A5. Streamlit UI (non-ML component)**
-- `ui/app.py`: form with transaction fields (or CSV upload) → "Check" button → POST to the API from C → show label, probability, red/green colour.
+- `ui/app.py`: CSV upload / sample-row picker (the Kaggle data has anonymised columns V1–V28, Time, Amount, so a hand-typed form is impractical) → "Check" button → POST to the API from C → show label, probability, red/green colour.
 - Optional: table of last 20 predictions.
 - Done when: works against C's running API; screenshot sent to B.
 
 **A6. Compile report**
 - Paste sections in order Q1–Q7, add diagrams, screenshots, code (appendix).
 - Each member writes 2 lines on their work; agree % together (total 100).
-- Output: `<groupid>.pdf`
-- Done when: every checklist item in section 7 is ticked.
+- Output: `13.pdf`
+- Done when: every item in the submission checklist (section 6) is ticked.
 
 **A7. Submit**
 - Final read-through with team → upload to Taxila → post confirmation screenshot in group.
@@ -183,7 +183,7 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - Done when: C can load `models:/fraud-model@champion` (tell C).
 
 **D5. Final notebook**
-- `<GroupNo>.ipynb`: group details table on top, EDA, pipeline run, metrics, confusion matrix, how to run API + UI.
+- `13.ipynb`: group details table on top, EDA, pipeline run, metrics, confusion matrix, how to run API + UI.
 
 **D6. Final review**
 - Re-run notebook top to bottom; check outputs are saved.
@@ -223,10 +223,10 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 | 17 | 2 Build | Streamlit UI (non-ML) calling the prediction API | A | ☐ |
 | 18 | 2 Build | Docker Compose wiring + end-to-end test | B | ☐ |
 | 19 | 3 Report | App screenshots with explanations | B | ☐ |
-| 20 | 3 Report | Clean `<GroupNo>.ipynb`: code, metrics, group details | D | ☐ |
+| 20 | 3 Report | Clean `13.ipynb`: code, metrics, group details | D | ☐ |
 | 21 | 3 Report | Architecture + patterns section of report | C | ☐ |
 | 22 | 3 Report | Compile report; fill contribution table | A | ☐ |
-| 23 | 4 Submit | Everyone reviews; upload `<groupid>.pdf` to Taxila | All | ☐ |
+| 23 | 4 Submit | Everyone reviews; upload `13.pdf` to Taxila | All | ☐ |
 
 ## 5. Checkpoints
 
@@ -245,5 +245,5 @@ Repo folders used below: `docs/`, `diagrams/`, `pipeline/`, `api/`, `ui/`, `note
 - [ ] Each quality requirement measurable and linked to an architecture choice
 - [ ] Architecture diagram labels ML vs non-ML components
 - [ ] Both patterns explained and shown working in screenshots
-- [ ] Code included; files named `<GroupNo>.ipynb` and `<groupid>.pdf`
+- [ ] Code included; files named `13.ipynb` and `13.pdf`
 - [ ] Uploaded to Taxila before the deadline
